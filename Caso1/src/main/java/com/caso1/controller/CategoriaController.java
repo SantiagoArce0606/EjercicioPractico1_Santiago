@@ -28,39 +28,28 @@ public class CategoriaController {
     }
     
     @GetMapping("/listado")
-    public String listado(Model model) {
-        
-        var categorias = categoriaService.getCategoria();
-        
-        model.addAttribute("categorias", categorias);
-        model.addAttribute("totalCategorias", categorias.size());
-        return "/categoria/listado";
+public String listado(Model model) {
+    var categorias = categoriaService.getCategoria();
+    model.addAttribute("categorias", categorias);
+    model.addAttribute("totalCategorias", categorias.size());
+    model.addAttribute("categoria", new Categoria());
+    return "categoria/listado";
     }
     
     @PostMapping("/guardar")
     public String guardar(@Valid Categoria categoria, RedirectAttributes redirectAttributes) {
         categoriaService.save(categoria);
-        redirectAttributes.addFlashAttribute("todoOk",messageSource.getMessage("mensaje.actualizado", null, Locale.getDefault()));
         return "redirect:/categoria/listado";
     }
     
      @PostMapping("/eliminar")
-    public String eliminar(@RequestParam Integer idCategoria, RedirectAttributes redirectAttributes) {
-        String titulo = "todoOk";
-        String detalle = "mensaje.eliminado";
-        try {
-            categoriaService.delete(idCategoria);
-        } catch (IllegalArgumentException e) {
-            titulo = "error";
-            detalle = "categoria.error01";
-        } catch (IllegalStateException e) {
-            titulo = "error";
-            detalle = "categoria.error02";
-        } catch (Exception e) {
-            titulo = "error"; 
-            detalle = "categoria.error03";
-        }
-        redirectAttributes.addFlashAttribute(titulo, messageSource.getMessage(detalle, null, Locale.getDefault()));
+    public String eliminar(@RequestParam Integer id, RedirectAttributes redirectAttributes) {
+        categoriaService.delete(id);
         return "redirect:/categoria/listado";
     }
+    @GetMapping("/modificar/{id}")
+public String modificar(@RequestParam Integer id, Model model) {
+    model.addAttribute("categoria", categoriaService.getCategoria());
+    return "/categoria/modificar";
+}
 }
