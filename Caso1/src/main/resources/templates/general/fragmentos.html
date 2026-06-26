@@ -1,0 +1,63 @@
+<head th:fragment="head">
+        <title>TechShop</title>
+        <meta charset="UTF-8"/>
+        <link rel="icon" type="image/png" sizes="16x16" href="/fav/favicon-16x16.png"/>
+        <link rel="icon" type="image/png" sizes="32x32" href="/fav/favicon-32x32.png"/>
+        <link rel="icon" type="image/png" sizes="96x96" href="/fav/favicon-96x96.png"/>
+        <link rel="icon" type="image/png" sizes="256x256" href="/fav/favicon-256x256.png"/>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>    
+    </head>
+    
+    <header th:fragment="header" class="header">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Sugerencias <span class="sr-only"></span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/categoria/listado}">Categorias</a>
+      </li>
+     <li class="nav-item">
+        <a class="nav-link" href="#">Servicios</a>
+     </li>
+     <li class="nav-item">
+        <a class="nav-link" href="#">Reserva</a>
+     </li>
+    </ul>
+  </div>
+</nav>
+    </header>
+    
+    <section th:fragment="textoInicial"class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Centro Fitness</h1>
+          <p class="lead text-muted">Bienvenido a la Pagina de este gimnasio donde damos todo tipo de atencion al cliente y un gran y eficiente sistema de reservas para poder lograr una mejor comunidad y servicio. Estos meses ofreceremos promociones de diferentes clases y las mostraremos abajo de este texto.</p>
+          <p>
+          </p>
+        </div>
+      </section>
+    
+    <div th:fragment="tarjetaVideo" class="card mb-4 box-shadow">
+    <iframe
+    width="100%"
+    height="225"
+    src="https://www.youtube.com/embed/LP4k9i7n8fs"
+    allowfullscreen>
+    </iframe>
+
+    <div class="card-body">
+        <p class="card-text">
+            PROMOCION 2X1 EN CLASES DE YOGA
+        </p>
+    </div>
+</div>
